@@ -4,14 +4,14 @@ title: "drone-ecology-forecast: bibliometric data and MATLAB growth-model pipeli
 version: 1.0.0
 date-released: "2026-08-27"
 license: MIT
-repository-code: "https://github.com/GITHUB-USERNAME/drone-ecology-forecast"
+repository-code: "https://github.com/vedranu/drone-ecology-forecast"
 authors:
   - given-names: "Vedran"
-    family-names: "SURNAME"
-    affiliation: "Polytechnic \"Marko Marulić\" in Knin, Croatia"
-  - given-names: "GIVEN-NAME"
-    family-names: "SURNAME"
-    affiliation: "Polytechnic \"Marko Marulić\" in Knin, Croatia"
+    family-names: "Uroš"
+    affiliation: "Faculty of Organization and Informatics, University of Zagreb, Varaždin, Croatia"
+  - given-names: "Marko"
+    family-names: "Jelić"
+    affiliation: "University of Applied Sciences “Marko Marulić” in Knin, Knin, Croatia"
 keywords:
   - unmanned aerial vehicles
   - environmental monitoring
