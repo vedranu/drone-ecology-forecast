@@ -52,14 +52,14 @@ Poddomene se **preklapaju** (jedan rad može biti u više poddomena) i **nisu po
 ## 4. Poznata ograničenja (obvezno u Limitations)
 
 1. Skok u svim serijama za 2025. (npr. `env_only` +39 % u odnosu na 2024.) je dijelom artefakt indeksiranja OpenAlexa (bolja pokrivenost sažetaka za nova izdanja i naknadni unos). Normalizacija nazivnikom to ublažava, ali ne uklanja; skripta provodi analizu osjetljivosti bez 2025.
-2. Pojmovi "drone/drones" hvataju i entomološku literaturu (trutovi), "UAS" i akronime izvan zrakoplovstva. Ručna provjera (odjeljak 4a) daje strogu preciznost 42 % i 80 % uključujući susjedne primjene (uglavnom precizna poljoprivreda).
+2. Pojmovi "drone/drones" hvataju i entomološku literaturu (trutovi), "UAS" i akronime izvan zrakoplovstva. Ručna provjera (odjeljak 4a) daje preciznost 60 % (okolišne primjene u širem smislu) i 84 % uključujući UAV radove bez okolišne primjene.
 3. Pojam "forest/vegetation" u E uvodi dio agronomske i šumarsko-gospodarske literature; `sub_forest` treba tumačiti kao "šumarstvo u širem smislu".
 4. OpenAlex nije Scopus/WoS: širi je (uključuje više regionalnih časopisa i Zenodo zapise), pa su apsolutni brojevi veći nego što bi ih dao Scopus. Trendovi i udjeli su usporedivi; apsolutne brojke nisu.
 5. `type:article` u OpenAlexu obuhvaća i mnoge konferencijske radove (nema pouzdane razlike article/proceedings).
 
 ## 4a. Ručna provjera preciznosti (27. 8. 2026.)
 
-Slučajni uzorak 100 zapisa (2005.–2025., seed 20260826) i 50 zapisa (2005.–2015., seed 20260827); kodiranje A (strogo relevantan) / B (UAV u susjednoj primjeni, uglavnom poljoprivreda) / C (šum). Rezultat: P(A) = 0,42 [0,33; 0,52], P(A∪B) = 0,80 [0,71; 0,87]; rano razdoblje P(A) = 0,54 [0,40; 0,67], razlika neznačajna (z = 1,39, p = 0,16). Strogi upit bez poljoprivrednih pojmova: CAGR 27,9 % (vs. 29,3 %). Datoteke: `validation/Provjera_preciznosti_upita.xlsx` (kriteriji, uzorci s prijedlogom oznaka i stupcem za konačnu ocjenu, formule), `validation/*.json` (sirovi API odgovori).
+Slučajni uzorak 100 zapisa (2005.–2025., seed 20260826) i 50 zapisa (2005.–2015., seed 20260827); prijedlog oznake uz pomoć AI, konačna ocjena neovisno od drugog autora (ekolog). Kodiranje A (UAV + okolišna primjena u širem smislu, uklj. vegetaciju i agroekosustave) / B (UAV bez okolišne primjene) / C (nema UAV-a). Rezultat: P(A) = 0,60 [0,50; 0,69], P(A∪B) = 0,84 [0,76; 0,90]; rano razdoblje P(A) = 0,68 [0,54; 0,79], razlika neznačajna (z = 0,95, p = 0,34). Slaganje AI prijedloga i konačne ocjene 78 %, Cohenova kappa 0,64 (sve razlike jednosmjerne prema širem tumačenju). Strogi upit bez poljoprivrednih pojmova: CAGR 27,9 % (vs. 29,3 %). Datoteke: `validation/Provjera_preciznosti_upita.xlsx` (kriteriji, uzorci, konačne ocjene, formule), `validation/agreement.py`, `validation/*.json` (sirovi API odgovori).
 
 ## 5. Pomoćni skup `registry_indicators.csv`
 
