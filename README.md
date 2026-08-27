@@ -1,5 +1,7 @@
 # drone-ecology-forecast
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22119199.svg)](https://doi.org/10.5281/zenodo.22119199)
+
 Reproducible data set and toolbox-free MATLAB pipeline behind the paper
 **"Drones in Ecology and Environmental Monitoring: Bibliometric State of the Art and Growth Forecasts to 2035"**
 (MIPRO Robotics, special session RTA-DRONES, submitted 2027).
@@ -53,8 +55,11 @@ negative-binomial bootstrap (1000 replicates, models refitted and re-weighted on
 
 ## Citation
 
-If you use the data or the code, please cite the paper and this repository (see `CITATION.cff`;
-a Zenodo DOI is added on release).
+If you use the data or the code, please cite the paper and this repository:
+
+V. Uroš and M. Jelić, "drone-ecology-forecast: bibliometric data and MATLAB growth-model pipeline
+for UAV research in ecology and environmental monitoring (v1.0)," Zenodo, 2026,
+doi: [10.5281/zenodo.22119199](https://doi.org/10.5281/zenodo.22119199). See also `CITATION.cff`.
 
 ## Licence
 

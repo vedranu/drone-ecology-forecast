@@ -5,6 +5,11 @@ version: 1.0.0
 date-released: "2026-08-27"
 license: MIT
 repository-code: "https://github.com/vedranu/drone-ecology-forecast"
+doi: 10.5281/zenodo.22119199
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22119199
+    description: "Zenodo archive of release v1.0-matlab"
 authors:
   - given-names: "Vedran"
     family-names: "Uroš"
