@@ -1,0 +1,296 @@
+
+########## revision run: sat_counts ##########
+=== Data: core_drone_env / env_only, 2005-2025 (n = 21 complete years) ===
+Papers 2005: 28 -> 2025: 4747
+CAGR 2005-2025: 29.3 %; last 10 years: 30.6 %
+Share of environmental literature: 0.34 -> 11.27 per 1000
+Share of all drone literature: 2.9 % -> 18.5 %
+Mann-Kendall (counts): S=209, Z=6.28, p=3.3e-10, Sen slope=147.3 papers/yr [90% CI 104.5, 194.1]
+Mann-Kendall (share):  S=202, Z=6.07, p=1.3e-09, Sen slope=0.601 per-1000/yr [90% CI 0.487, 0.756]
+Breakpoint (counts): 2010, growth 17.3%/yr before vs 34.3%/yr after (F=5.5, p~0.0144)
+Breakpoint (share):  2010, growth 8.0%/yr before vs 26.5%/yr after (F=4.2, p~0.0319)
+
+Subdomains (2015 vs 2025, CAGR last 10 y):
+  Fauna surveys                       100    547   18.5 %
+  Forest health                       114   2079   33.7 %
+  Water quality                       126   1252   25.8 %
+  Air/gas emissions                    28    300   26.8 %
+  Wildfire                             25    302   28.3 %
+  Conservation/protected areas         33    441   29.6 %
+
+=== Growth models, target = count ===
+Overdispersion c-hat = 19.78
+model          k     deviance      QAICc   weight  RMSElog  parameters
+logistic       3        364.9       33.9    0.323    0.230  K=9739, r=0.302, t_mid=2025.9
+gompertz       3        352.2       33.3    0.445    0.306  K=3.745e+06, r=0.031, t_mid=2086.3
+bass           3        377.9       34.6    0.232    0.224  m=8.856e+04, p=0.00018, q=0.294, t_peak=2029.1
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  logistic       38.6    31.0    0.363   per-origin MAPE: [42.6 58.3 15]
+  gompertz       39.2    38.7    0.353   per-origin MAPE: [41.5 57.1 18.8]
+  bass           40.8    27.4    0.408   per-origin MAPE: [42.6 58.3 21.5]
+Bootstrap (1000 replicates) ...
+  bootstrap 100 / 1000
+  bootstrap 200 / 1000
+  bootstrap 300 / 1000
+  bootstrap 400 / 1000
+  bootstrap 500 / 1000
+  bootstrap 600 / 1000
+  bootstrap 700 / 1000
+  bootstrap 800 / 1000
+  bootstrap 900 / 1000
+  bootstrap 1000 / 1000
+Forecast (count, papers/yr) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+logistic         6364 [   4668,1.001e+04]     7551 [   5084,1.48e+04]     8409 [   5336,2.105e+04]     9154 [   5487,3.132e+04]
+gompertz         7920 [   6388,1.027e+04] 1.149e+04 [   8658,1.653e+04] 1.631e+04 [1.128e+04,2.629e+04] 2.651e+04 [1.607e+04,5.145e+04]
+bass             6147 [   3868,1.031e+04]     6474 [   3130,1.692e+04]     5760 [   2144,2.741e+04]     3681 [   1013,5.075e+04]
+QAICc-avg        7133 [   5215,   9502]     9443 [   5409,1.472e+04] 1.205e+04 [   5137,2.234e+04] 1.706e+04 [   4056,4.225e+04]
+
+=== Growth models, target = share ===
+Overdispersion c-hat = 13.11
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        839.3       80.9    0.000    0.389  a=0.00039, b=0.1757 (19.2 %/yr)
+logistic       3        200.5       34.9    0.999    0.414  K=0.01328, r=0.326, t_mid=2019.9
+gompertz       3        384.1       48.9    0.001    0.502  K=0.04502, r=0.079, t_mid=2028.7
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    72.8    72.7    0.571   per-origin MAPE: [77 83.2 58.3]
+  logistic       54.8    54.7    0.438   per-origin MAPE: [77 77 10.6]
+  gompertz       65.1    64.9    0.518   per-origin MAPE: [75.9 82.2 37.1]
+Bootstrap (1000 replicates) ...
+  bootstrap 100 / 1000
+  bootstrap 200 / 1000
+  bootstrap 300 / 1000
+  bootstrap 400 / 1000
+  bootstrap 500 / 1000
+  bootstrap 600 / 1000
+  bootstrap 700 / 1000
+  bootstrap 800 / 1000
+  bootstrap 900 / 1000
+  bootstrap 1000 / 1000
+Forecast (share, per 1000 env. papers) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential      22.2 [  18.49,  26.77]    31.55 [  25.46,  39.35]    44.83 [  35.12,  57.98]    75.94 [  56.55,  103.6]
+logistic        12.39 [  11.74,  13.17]     12.8 [  12.07,  13.74]    13.03 [  12.23,  14.06]    13.18 [  12.34,  14.31]
+gompertz        15.69 [  14.05,  17.68]     18.3 [   15.9,  21.41]    20.86 [  17.62,   25.3]    24.52 [  19.85,  31.36]
+QAICc-avg       13.13 [  12.13,  14.86]       14 [  12.55,  16.97]    14.72 [  12.83,  18.98]    15.63 [  13.06,  22.65]
+
+=== Sensitivity: counts without 2025 ===
+  logistic     dev=   157.4  forecast [3986 4220 4347 4433]
+  gompertz     dev=   264.5  forecast [6403 8641 11352 16335]
+  bass         dev=   162.1  forecast [2647 1869 1154 484]
+
+Done. Results written to ..\results_rev\sat_counts
+
+########## revision run: no2025 ##########
+=== Data: core_drone_env / env_only, 2005-2024 (n = 20 complete years) ===
+Papers 2005: 28 -> 2024: 3150
+CAGR 2005-2024: 28.2 %; last 10 years: 32.8 %
+Share of environmental literature: 0.34 -> 10.36 per 1000
+Share of all drone literature: 2.9 % -> 16.9 %
+Mann-Kendall (counts): S=189, Z=6.10, p=1e-09, Sen slope=134.2 papers/yr [90% CI 86.4, 172.9]
+Mann-Kendall (share):  S=182, Z=5.87, p=4.3e-09, Sen slope=0.560 per-1000/yr [90% CI 0.449, 0.711]
+Breakpoint (counts): 2010, growth 16.8%/yr before vs 34.9%/yr after (F=5.9, p~0.0121)
+Breakpoint (share):  2010, growth 6.5%/yr before vs 28.0%/yr after (F=6.7, p~0.00783)
+
+Subdomains (2014 vs 2024, CAGR last 10 y):
+  Fauna surveys                        56    422   22.4 %
+  Forest health                        62   1426   36.8 %
+  Water quality                        82    883   26.8 %
+  Air/gas emissions                     9    203   36.6 %
+  Wildfire                             12    225   34.1 %
+  Conservation/protected areas         16    245   31.4 %
+
+=== Growth models, target = count ===
+Overdispersion c-hat = 9.92
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        463.5       66.5    0.000    0.282  a=28.4, b=0.2535 (28.9 %/yr)
+logistic       3        157.4       38.4    0.558    0.314  K=4481, r=0.348, t_mid=2022.0
+gompertz       3        264.5       49.2    0.003    0.384  K=1.788e+05, r=0.047, t_mid=2053.5
+bass           3        162.1       38.9    0.440    0.285  m=3.749e+04, p=0.0003, q=0.334, t_peak=2025.0
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    45.0    44.5    0.397   per-origin MAPE: [38.4 55.9 40.7]
+  logistic       34.1    32.5    0.312   per-origin MAPE: [38.4 55.9 8]
+  gompertz       39.7    39.2    0.357   per-origin MAPE: [37.5 55 26.5]
+  bass           35.0    29.5    0.324   per-origin MAPE: [38.4 55.9 10.5]
+Bootstrap (1000 replicates) ...
+  bootstrap 100 / 1000
+  bootstrap 200 / 1000
+  bootstrap 300 / 1000
+  bootstrap 400 / 1000
+  bootstrap 500 / 1000
+  bootstrap 600 / 1000
+  bootstrap 700 / 1000
+  bootstrap 800 / 1000
+  bootstrap 900 / 1000
+  bootstrap 1000 / 1000
+Forecast (count, papers/yr) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential      9691 [   8082,1.153e+04] 1.609e+04 [1.303e+04,1.974e+04] 2.672e+04 [2.098e+04,3.378e+04] 5.716e+04 [4.276e+04,7.572e+04]
+logistic         3986 [   3443,   4767]     4220 [   3573,   5206]     4347 [   3632,   5461]     4433 [   3674,   5651]
+gompertz         6403 [   5295,   7867]     8641 [   6760,1.141e+04] 1.135e+04 [   8368,1.621e+04] 1.633e+04 [1.1e+04,2.632e+04]
+bass             2647 [   1883,   3849]     1869 [   1181,   3141]     1154 [  661.1,   2191]    484.1 [    248,   1043]
+QAICc-avg        4248 [   2732,   6362]     4707 [   2260,   8903]     5193 [   1840,1.221e+04]     6302 [   1499,2.094e+04]
+
+=== Growth models, target = share ===
+Overdispersion c-hat = 14.00
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        629.1       60.3    0.000    0.334  a=0.000319, b=0.1919 (21.2 %/yr)
+logistic       3        199.2       32.4    0.997    0.432  K=0.01297, r=0.330, t_mid=2019.8
+gompertz       3        358.1       43.8    0.003    0.476  K=0.06813, r=0.069, t_mid=2032.7
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    57.7    57.5    0.479   per-origin MAPE: [58.8 66.3 47.9]
+  logistic       44.2    44.1    0.376   per-origin MAPE: [58.8 62.1 11.6]
+  gompertz       51.8    51.7    0.437   per-origin MAPE: [58 65.5 31.8]
+Bootstrap (1000 replicates) ...
+  bootstrap 100 / 1000
+  bootstrap 200 / 1000
+  bootstrap 300 / 1000
+  bootstrap 400 / 1000
+  bootstrap 500 / 1000
+  bootstrap 600 / 1000
+  bootstrap 700 / 1000
+  bootstrap 800 / 1000
+  bootstrap 900 / 1000
+  bootstrap 1000 / 1000
+Forecast (share, per 1000 env. papers) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential     26.36 [  21.32,  32.47]    38.69 [  30.25,  49.44]    56.79 [  42.95,  75.32]      101 [  72.62,  141.1]
+logistic        12.16 [   11.2,  13.29]    12.54 [  11.45,  13.85]    12.74 [  11.59,  14.19]    12.88 [  11.68,  14.43]
+gompertz        17.19 [  14.36,  20.83]    20.52 [  16.44,   26.2]    23.94 [  18.43,  32.36]     29.1 [     21,  43.17]
+QAICc-avg       13.13 [  11.69,  16.17]    14.05 [  12.12,   19.4]    14.92 [  12.41,  23.12]    16.08 [  12.68,  30.83]
+
+Done. Results written to ..\results_rev\no2025
+
+########## revision run: den_field23 ##########
+=== Data: core_drone_env / field23_envsci, 2005-2025 (n = 21 complete years) ===
+Papers 2005: 28 -> 2025: 4747
+CAGR 2005-2025: 29.3 %; last 10 years: 30.6 %
+Share of environmental literature: 0.19 -> 12.90 per 1000
+Share of all drone literature: 2.9 % -> 18.5 %
+Mann-Kendall (counts): S=209, Z=6.28, p=3.3e-10, Sen slope=147.3 papers/yr [90% CI 104.5, 194.1]
+Mann-Kendall (share):  S=206, Z=6.19, p=6e-10, Sen slope=0.536 per-1000/yr [90% CI 0.380, 0.668]
+Breakpoint (counts): 2010, growth 17.3%/yr before vs 34.3%/yr after (F=5.5, p~0.0144)
+Breakpoint (share):  2010, growth 7.5%/yr before vs 31.2%/yr after (F=10.6, p~0.00102)
+
+Subdomains (2015 vs 2025, CAGR last 10 y):
+  Fauna surveys                       100    547   18.5 %
+  Forest health                       114   2079   33.7 %
+  Water quality                       126   1252   25.8 %
+  Air/gas emissions                    28    300   26.8 %
+  Wildfire                             25    302   28.3 %
+  Conservation/protected areas         33    441   29.6 %
+
+=== Growth models, target = count ===
+Overdispersion c-hat = 19.78
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        469.5       36.5    0.083    0.266  a=27.5, b=0.2563 (29.2 %/yr)
+logistic       3        364.9       33.9    0.296    0.230  K=9739, r=0.302, t_mid=2025.9
+gompertz       3        352.2       33.3    0.408    0.306  K=3.745e+06, r=0.031, t_mid=2086.3
+bass           3        377.9       34.6    0.213    0.224  m=8.856e+04, p=0.00018, q=0.294, t_peak=2029.1
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    45.3    44.9    0.395   per-origin MAPE: [42.6 58.3 35.1]
+  logistic       38.6    31.0    0.363   per-origin MAPE: [42.6 58.3 15]
+  gompertz       39.2    38.7    0.353   per-origin MAPE: [41.5 57.1 18.8]
+  bass           40.8    27.4    0.408   per-origin MAPE: [42.6 58.3 21.5]
+Bootstrap (300 replicates) ...
+  bootstrap 100 / 300
+  bootstrap 200 / 300
+  bootstrap 300 / 300
+Forecast (count, papers/yr) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential      9966 [   8724,1.142e+04] 1.664e+04 [1.432e+04,1.943e+04] 2.778e+04 [2.344e+04,3.331e+04] 5.992e+04 [4.909e+04,7.482e+04]
+logistic         6364 [   4732,   9786]     7551 [   5163,1.461e+04]     8409 [   5416,2.179e+04]     9154 [   5604,3.364e+04]
+gompertz         7920 [   6395,   9968] 1.149e+04 [   8658,1.608e+04] 1.631e+04 [1.126e+04,2.563e+04] 2.651e+04 [1.612e+04,4.955e+04]
+bass             6147 [   3736,1.014e+04]     6474 [   2959,1.604e+04]     5760 [   1978,2.546e+04]     3681 [  908.2,5.269e+04]
+QAICc-avg        8612 [   6020,1.044e+04] 1.32e+04 [   7051,1.729e+04] 1.998e+04 [   7416,2.901e+04] 3.721e+04 [   9198,6.329e+04]
+
+=== Growth models, target = share ===
+Overdispersion c-hat = 13.41
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        513.5       54.9    0.000    0.308  a=0.000157, b=0.2241 (25.1 %/yr)
+logistic       3        223.1       36.0    0.958    0.362  K=0.01904, r=0.310, t_mid=2023.1
+gompertz       3        307.0       42.2    0.042    0.441  K=0.5201, r=0.046, t_mid=2053.6
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    48.2    47.7    0.418   per-origin MAPE: [43.7 56.9 44.2]
+  logistic       36.5    35.6    0.329   per-origin MAPE: [43.7 56.9 9]
+  gompertz       44.3    43.8    0.389   per-origin MAPE: [42.8 55.9 34.1]
+Bootstrap (300 replicates) ...
+  bootstrap 100 / 300
+  bootstrap 200 / 300
+  bootstrap 300 / 300
+Forecast (share, per 1000 env. papers) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential     27.24 [  23.69,  31.13]    42.65 [  36.37,  50.07]    66.77 [   55.6,  80.63]    130.8 [  104.7,  164.8]
+logistic        15.59 [  13.77,  18.26]    17.02 [  14.68,   20.8]    17.89 [  15.18,  22.41]    18.57 [  15.52,  23.74]
+gompertz        20.67 [  18.25,  23.52]     27.4 [  23.27,  32.54]    35.42 [  28.99,  44.03]    49.96 [  37.97,  66.72]
+QAICc-avg       19.56 [  16.38,   24.2]     25.2 [  18.59,  35.46]    32.06 [  20.67,  51.29]     44.9 [  24.28,   94.4]
+
+Done. Results written to ..\results_rev\den_field23
+
+########## revision run: den_allworks ##########
+=== Data: core_drone_env / all_works, 2005-2025 (n = 21 complete years) ===
+Papers 2005: 28 -> 2025: 4747
+CAGR 2005-2025: 29.3 %; last 10 years: 30.6 %
+Share of environmental literature: 0.01 -> 0.66 per 1000
+Share of all drone literature: 2.9 % -> 18.5 %
+Mann-Kendall (counts): S=209, Z=6.28, p=3.3e-10, Sen slope=147.3 papers/yr [90% CI 104.5, 194.1]
+Mann-Kendall (share):  S=206, Z=6.19, p=6e-10, Sen slope=0.025 per-1000/yr [90% CI 0.016, 0.033]
+Breakpoint (counts): 2010, growth 17.3%/yr before vs 34.3%/yr after (F=5.5, p~0.0144)
+Breakpoint (share):  2010, growth 7.7%/yr before vs 33.5%/yr after (F=16.0, p~0.000122)
+
+Subdomains (2015 vs 2025, CAGR last 10 y):
+  Fauna surveys                       100    547   18.5 %
+  Forest health                       114   2079   33.7 %
+  Water quality                       126   1252   25.8 %
+  Air/gas emissions                    28    300   26.8 %
+  Wildfire                             25    302   28.3 %
+  Conservation/protected areas         33    441   29.6 %
+
+=== Growth models, target = count ===
+Overdispersion c-hat = 19.78
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        469.5       36.5    0.083    0.266  a=27.5, b=0.2563 (29.2 %/yr)
+logistic       3        364.9       33.9    0.296    0.230  K=9739, r=0.302, t_mid=2025.9
+gompertz       3        352.2       33.3    0.408    0.306  K=3.745e+06, r=0.031, t_mid=2086.3
+bass           3        377.9       34.6    0.213    0.224  m=8.856e+04, p=0.00018, q=0.294, t_peak=2029.1
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    45.3    44.9    0.395   per-origin MAPE: [42.6 58.3 35.1]
+  logistic       38.6    31.0    0.363   per-origin MAPE: [42.6 58.3 15]
+  gompertz       39.2    38.7    0.353   per-origin MAPE: [41.5 57.1 18.8]
+  bass           40.8    27.4    0.408   per-origin MAPE: [42.6 58.3 21.5]
+Bootstrap (300 replicates) ...
+  bootstrap 100 / 300
+  bootstrap 200 / 300
+  bootstrap 300 / 300
+Forecast (count, papers/yr) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential      9966 [   8724,1.142e+04] 1.664e+04 [1.432e+04,1.943e+04] 2.778e+04 [2.344e+04,3.331e+04] 5.992e+04 [4.909e+04,7.482e+04]
+logistic         6364 [   4732,   9786]     7551 [   5163,1.461e+04]     8409 [   5416,2.179e+04]     9154 [   5604,3.364e+04]
+gompertz         7920 [   6395,   9968] 1.149e+04 [   8658,1.608e+04] 1.631e+04 [1.126e+04,2.563e+04] 2.651e+04 [1.612e+04,4.955e+04]
+bass             6147 [   3736,1.014e+04]     6474 [   2959,1.604e+04]     5760 [   1978,2.546e+04]     3681 [  908.2,5.269e+04]
+QAICc-avg        8612 [   6020,1.044e+04] 1.32e+04 [   7051,1.729e+04] 1.998e+04 [   7416,2.901e+04] 3.721e+04 [   9198,6.329e+04]
+
+=== Growth models, target = share ===
+Overdispersion c-hat = 12.09
+model          k     deviance      QAICc   weight  RMSElog  parameters
+exponential    2        422.5       52.8    0.000    0.286  a=5.24e-06, b=0.2455 (27.8 %/yr)
+logistic       3        197.1       36.9    0.959    0.360  K=0.001123, r=0.316, t_mid=2024.2
+gompertz       3        273.6       43.2    0.041    0.426  K=0.1545, r=0.036, t_mid=2071.9
+Rolling-origin backtest (origins [2018 2020 2022]): MAPE % | bias % | RMSElog
+  exponential    38.2    37.6    0.350   per-origin MAPE: [31.8 42.5 40.4]
+  logistic       29.2    28.6    0.280   per-origin MAPE: [31.8 42.5 13.4]
+  gompertz       36.9    36.2    0.339   per-origin MAPE: [31 41.6 38]
+Bootstrap (300 replicates) ...
+  bootstrap 100 / 300
+  bootstrap 200 / 300
+  bootstrap 300 / 300
+Forecast (share, per 1000 env. papers) point estimate and 90 % bootstrap interval:
+model                          2028                   2030                   2032                   2035
+exponential     1.485 [  1.313,  1.679]    2.425 [  2.099,  2.804]    3.963 [  3.354,   4.68]    8.276 [  6.767,  10.11]
+logistic       0.8637 [ 0.7706, 0.9954]   0.9685 [ 0.8406,   1.18]    1.035 [ 0.8806,  1.308]    1.087 [ 0.9097,  1.408]
+gompertz        1.165 [  1.034,   1.34]    1.639 [  1.383,   2.01]    2.251 [  1.821,  2.968]    3.478 [  2.636,  5.174]
+QAICc-avg       1.082 [ 0.8634,  1.312]    1.467 [   1.02,  2.023]    1.961 [  1.174,  3.079]    2.957 [  1.445,  5.882]
+
+Done. Results written to ..\results_rev\den_allworks
+
+All revision runs written to ../results_rev

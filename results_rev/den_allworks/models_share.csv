@@ -1,0 +1,4 @@
+model,k,deviance,loglik,QAICc,weight,rmse_log,chat_pearson,backtest_MAPE,backtest_bias,parameters
+exponential,2,422.500,-291.104,52.814,0.0003,0.2862,21.550,38.24,37.59,"a=5.24e-06, b=0.2455 (27.8 %/yr)"
+logistic,3,197.069,-178.388,36.916,0.9591,0.3602,12.092,29.24,28.59,"K=0.001123, r=0.316, t_mid=2024.2"
+gompertz,3,273.578,-216.643,43.244,0.0405,0.4262,17.097,36.87,36.21,"K=0.1545, r=0.036, t_mid=2071.9"
